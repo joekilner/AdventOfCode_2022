@@ -6,7 +6,4 @@ for line in data:
     priorities.append((ord(set(line[:middle]).intersection(set(line[middle:])).pop()) - 96) % 58)
 print(sum(priorities))
 
-priorities = []
-for group in zip(data[::3], data[1::3], data[2::3]):
-    priorities.append((ord(set(group[0]).intersection(group[1]).intersection(group[2]).pop()) - 96) % 58)
-print(sum(priorities))
+print(sum([(ord(set.intersection(x).pop()) - 96) % 58 for x in map(set, zip(data[::3], data[1::3], data[2::3]))]))
